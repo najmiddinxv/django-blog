@@ -1,10 +1,14 @@
 from django.urls import path
-from . import views
+from .views import dashboard
+from .views_folder import tag_views
 
 urlpatterns = [
-    path('tags/', views.tag_list, name='tag_list'),
-    path('tags/<int:pk>/', views.tag_detail, name='tag_detail'),
-    path('tags/create/', views.tag_create, name='tag_create'),
-    path('tags/<int:pk>/update/', views.tag_update, name='tag_update'),
-    path('tags/<int:pk>/delete/', views.tag_delete, name='tag_delete'),
+    #views.py
+    path('dashboard/', dashboard, name='dashboard'),
+    #views_folder/tag_views.py
+    path('tags/', tag_views.index, name='tags.index'),
+    path('tags/<int:pk>/', tag_views.show, name='tags.show'),
+    path('tags/create/', tag_views.create, name='tags.create'),
+    path('tags/update/<int:pk>/', tag_views.update, name='tags.update'),
+    path('tags/delete/<int:pk>/', tag_views.delete, name='tags.delete'),
 ]

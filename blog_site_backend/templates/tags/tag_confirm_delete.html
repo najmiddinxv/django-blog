@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Confirm Delete</title>
-</head>
-<body>
-    <h1>Are you sure you want to delete "{{ tag.name }}"?</h1>
+{% extends "base.html" %}
+{% block content %}
+<h1>Are you sure you want to delete "{{ tag.name }}"?</h1>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Yes, delete</button>
     </form>
-    <a href="{% url 'tag_list' %}">Cancel</a>
-</body>
-</html>
+    <a href="{% url 'tags.index' %}">Cancel</a>
+{% endblock %}
+

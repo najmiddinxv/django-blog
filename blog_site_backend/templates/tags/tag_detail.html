@@ -1,8 +1,10 @@
-<!-- templates/tags/tag_detail.html -->
-
+{% extends "base.html" %}
+{% block content %}
 <h1>Tag Detail</h1>
 
 <p>Name: {{ tag.name }}</p>
 
-<a href="{% url 'tag_update' tag.pk %}">Update</a>
-<a href="{% url 'tag_delete' tag.pk %}">Delete</a>
+<a href="{% url 'tags.update' tag.pk %}">Update</a>
+<a href="{% url 'tags.delete' tag.pk %}">Delete</a>
+{% endblock %}
+
