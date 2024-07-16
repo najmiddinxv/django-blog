@@ -1,0 +1,8 @@
+<!-- templates/tags/tag_detail.html -->
+
+<h1>Tag Detail</h1>
+
+<p>Name: {{ tag.name }}</p>
+
+<a href="{% url 'tag_update' tag.pk %}">Update</a>
+<a href="{% url 'tag_delete' tag.pk %}">Delete</a>

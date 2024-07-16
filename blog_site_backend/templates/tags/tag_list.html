@@ -1,0 +1,13 @@
+<!-- templates/tags/tag_list.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Tag List</h1>
+
+    <ul>
+        {% for tag in tags %}
+            <li><a href="{% url 'tag_detail' tag.pk %}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+<a href="{% url 'tag_create' %}">Create New Tag</a>
+{% endblock %}
