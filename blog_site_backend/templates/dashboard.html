@@ -1,4 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Dashboard</h1>
+<form action="{% url 'set_language' %}" method="get">
+    <select name="language" onchange="this.form.submit()">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="uz">O'zbekcha</option>
+    </select>
+</form>
 {% endblock %}

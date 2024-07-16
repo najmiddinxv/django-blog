@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import dashboard
+from .views import dashboard, set_language
 from .views_folder import tag_views
 
 urlpatterns = [
     #views.py
+    path('set-language/', set_language, name='set_language'),
     path('dashboard/', dashboard, name='dashboard'),
     #views_folder/tag_views.py
     path('tags/', tag_views.index, name='tags.index'),

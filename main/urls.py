@@ -18,14 +18,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
+    # Other non-i18n URL patterns can go here
+]
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
-    path('', include('blog_site_frontend.urls'), name='blog_site_frontend'),
-    # path('api/', include('blog_site_frontend_api.urls'), name='blog_site_frontend_api'),
     path('blog-site-backend/', include('blog_site_backend.urls'), name='blog_site_backend'),
     path('blog-site-backend/api/', include('blog_site_backend_api.urls'), name='blog_site_backend_api'),
-]
+    path('', include('blog_site_frontend.urls'), name='blog_site_frontend'),
+    # path('api/', include('blog_site_frontend_api.urls'), name='blog_site_frontend_api'),
+    
+)
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
@@ -35,3 +41,4 @@ urlpatterns = [
 # Serve media files during development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

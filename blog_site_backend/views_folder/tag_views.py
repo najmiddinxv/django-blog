@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from blog_site_backend.models import Tag
 from blog_site_backend.forms_folder.tag_forms import TagForm
+from django.utils.translation import gettext as _
 
 # Create your views here.
 def index(request):
     tags = Tag.objects.all()
-    return render(request, 'tags/tag_list.html', {'tags': tags})
+    translated_word = _("Hello, world!")
+    return render(request, 'tags/tag_list.html', {
+        'tags': tags,
+        'translated_word': translated_word
+    })
 
 def show(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
