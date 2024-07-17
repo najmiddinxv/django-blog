@@ -27,7 +27,7 @@ def generate_hashed_filename(image):
 
 def save_resized_images(image, filename):
     sizes = {
-        "large": (800, 800),
+        "large": (1200, 1920),
         "middle": (400, 400),
         "small": (200, 200)
     }
@@ -64,7 +64,7 @@ class Categories(models.Model):
     icon = models.CharField(max_length=255, null=True, blank=True)
     
     image = models.ImageField(upload_to='images/')
-    versions = models.JSONField(blank=True, null=True)
+    resized_images = models.JSONField(blank=True, null=True)
 
     # image_versions = models.JSONField(default=dict)
     
@@ -86,7 +86,7 @@ class Categories(models.Model):
     def save(self, *args, **kwargs):
         if self.image:
             filename = self.image.name.split('.')[0]
-            self.versions = save_resized_images(self.image, filename)
+            self.resized_images = save_resized_images(self.image, filename)
             # Clear the original image field after saving versions
             self.image = None
         super().save(*args, **kwargs)
