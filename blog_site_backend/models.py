@@ -13,8 +13,6 @@ class Tag(models.Model):
         return self.name
 
 
-
-
 def resize_image(image, size):
     img = Image.open(image)
     img.thumbnail(size)
@@ -55,34 +53,16 @@ def save_resized_images(image, filename):
     return saved_files
 
 
-
-
 class Categories(models.Model):
     parent = models.ForeignKey('self', on_delete=models.SET_NULL, related_name='children', null=True, blank=True)
     categoryable_type = models.CharField(max_length=255, null=True, blank=True)
     name = models.CharField(max_length=255)
     icon = models.CharField(max_length=255, null=True, blank=True)
-    
     image = models.ImageField(upload_to='images/')
     resized_images = models.JSONField(blank=True, null=True)
-
-    # image_versions = models.JSONField(default=dict)
-    
-    # image = models.ImageField(upload_to='images', storage=HashedFileSystemStorage())
-
-    # image = models.ImageField(upload_to='images/', null=True, blank=True)
-    # file = models.FileField(upload_to='specific_folder/')
-    # image = models.ImageField(upload_to='images/')
     order = models.IntegerField(null=True, blank=True)
     status = models.SmallIntegerField(default=1)
 
-
-
-    # def save(self, *args, **kwargs):
-    #     if self.image:
-    #         filename = self.image.name.split('.')[0]
-    #         self.versions = save_resized_images(self.image, filename)
-    #     super().save(*args, **kwargs)
     def save(self, *args, **kwargs):
         if self.image:
             filename = self.image.name.split('.')[0]
@@ -100,3 +80,24 @@ class Categories(models.Model):
             return f"{self.parent.name} - {self.name}"
         else:
             return f"{self.name}"
+        
+        
+        
+class Post(models.Model):
+    category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL, related_name='posts')
+    title = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    body = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='images/')
+    resized_images = models.JSONField(blank=True, null=True)
+    created_by = models.IntegerField(null=True, blank=True)
+    status = models.SmallIntegerField(default=1)
+    slider = models.BooleanField(default=False)
+    view_count = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title      
+        
