@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _
 
 # Create your views here.
 def index(request):
-    tags = Tag.objects.all()
+    tags = Tag.objects.all().order_by('-id')
     translated_word = _("Hello, world!")
     return render(request, 'tags/index.html', {
         'tags': tags,
