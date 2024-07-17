@@ -30,6 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'css/custom.css' %}" rel="stylesheet">
 
 </head>
 
@@ -121,9 +122,9 @@
               <a href="#">Show all messages</a>
             </li>
 
-          </ul><!-- End Messages Dropdown Items -->
+          </ul>
 
-        </li><!-- End Messages Nav -->
+        </li>
 
         <li class="nav-item dropdown pe-3">
 
@@ -171,18 +172,18 @@
               </a>
             </li>
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+          </ul>
+        </li>
 
       </ul>
-    </nav><!-- End Icons Navigation -->
+    </nav>
 
-  </header><!-- End Header -->
+  </header>
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
     {% include 'sidebar.html' %}
-  </aside><!-- End Sidebar-->
+  </aside>
 
   <main id="main" class="main">
 
@@ -195,7 +196,7 @@
           {% block breadcrumb %}{% endblock %}
         </ol>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section dashboard">
       <div class="row">

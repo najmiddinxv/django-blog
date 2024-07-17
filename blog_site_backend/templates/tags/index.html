@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block pagetitle %}Tags{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item active"><a href="#">Tags</a></li>
+{% endblock %}
+{% block content %}
+
+<div class="card">
+    <div class="card-body" style="padding:20px">
+        <div class="template-index-links">
+            <div class="template-index-links-item"><a href="{% url 'tags.create' %}" class="btn btn-primary">Create New Tag</a></div>
+        </div>
+      <table class="table table-bordered table-hover">
+        <thead>
+            
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">created at</th>
+            <th scope="col">updated at</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for tag in tags %}
+          <tr>
+            <th scope="row">{{ tag.id }}</th>
+            <td>{{ tag.name }}</td>
+            <td>{{ tag.created_at }}</td>
+            <td>{{ tag.updated_at }}</td>
+            <td>
+                <div>
+                    <a href="{% url 'tags.show' tag.pk %}" class="btn btn-success">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a href="{% url 'tags.update' tag.pk %}" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a href="{% url 'tags.delete' tag.pk %}" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <!-- End Primary Color Bordered Table -->
+
+    </div>
+  </div>
+{% endblock %}

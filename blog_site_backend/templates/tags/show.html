@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block pagetitle %}Tags{% endblock %}
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="#">Tags</a></li>
+<li class="breadcrumb-item active">show</li>
+{% endblock %}
+{% block content %}
+
+<p>Name: {{ tag.name }}</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Column name</th>
+            <th>data</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>id</td>
+            <td>{{ tag.id }}</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>{{ tag.name }}</td>
+        </tr>
+        <tr>
+            <td>created_at</td>
+            <td>{{ tag.created_at }}</td>
+        </tr>
+        <tr>
+            <td>updated_at</td>
+            <td>{{ tag.updated_at }}</td>
+        </tr>
+    </tbody>
+  </table>
+
+<a href="{% url 'tags.update' tag.pk %}" class="btn btn-primary">Update</a>
+<a href="{% url 'tags.delete' tag.pk %}" class="btn btn-danger">Delete</a>
+{% endblock %}
+

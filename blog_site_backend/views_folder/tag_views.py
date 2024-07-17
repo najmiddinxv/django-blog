@@ -7,14 +7,14 @@ from django.utils.translation import gettext as _
 def index(request):
     tags = Tag.objects.all()
     translated_word = _("Hello, world!")
-    return render(request, 'tags/tag_list.html', {
+    return render(request, 'tags/index.html', {
         'tags': tags,
         'translated_word': translated_word
     })
 
 def show(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
-    return render(request, 'tags/tag_detail.html', {'tag': tag})
+    return render(request, 'tags/show.html', {'tag': tag})
 
 def create(request):
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def create(request):
             return redirect('tags.index')
     else:
         form = TagForm()
-    return render(request, 'tags/tag_form.html', {'form': form})
+    return render(request, 'tags/create.html', {'form': form})
 
 def update(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
@@ -35,7 +35,7 @@ def update(request, pk):
             return redirect('tags.index')
     else:
         form = TagForm(instance=tag)
-    return render(request, 'tags/tag_form.html', {'form': form})
+    return render(request, 'tags/create.html', {'form': form})
 
 def delete(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
