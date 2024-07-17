@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #added packages 
+    'modeltranslation',
     'rest_framework',
+    #my apps
     'blog_site_backend',
     'blog_site_backend_api',
     'blog_site_frontend',
@@ -53,7 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware', # new
+    # addedd middlewares
+    'django.middleware.locale.LocaleMiddleware', 
 ]
 
 ROOT_URLCONF = 'main.urls'
