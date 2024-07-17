@@ -29,7 +29,7 @@ urlpatterns += i18n_patterns(
     path('blog-site-backend/', include('blog_site_backend.urls'), name='blog_site_backend'),
     path('blog-site-backend/api/', include('blog_site_backend_api.urls'), name='blog_site_backend_api'),
     path('', include('blog_site_frontend.urls'), name='blog_site_frontend'),
-    # path('api/', include('blog_site_frontend_api.urls'), name='blog_site_frontend_api'),
+    path('api/', include('blog_site_frontend_api.urls'), name='blog_site_frontend_api'),
     
 )
 
